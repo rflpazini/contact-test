@@ -14,14 +14,23 @@ function loginUser() {
 	}
 	else if($login == $res['email'] && $pw == $res['password']){
 		session_start();
-		$_SESSION['name'] = $informacao['username'];
-		$_SESSION['login'] = $informacao['email'];
+		$_SESSION['login'] = $login;
+		$_SESSION['name'] = $res['username'];
 		echo "<script>window.location.href='../agenda/agenda.php';</script>";
 	}
 
 	else{
 		echo"<script language='javascript' type='text/javascript'>alert('Usuario ou senha incorretos');window.location.href='../index.php';</script>";
 		session_destroy();
+	}
+}
+
+function sessionVerify() {
+	session_start();
+	if(!isset($_SESSION['login'])){
+		session_destroy();
+		echo "<script>window.location.href='../index.php';</script>";
+		die();
 	}
 }
 

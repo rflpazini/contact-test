@@ -36,3 +36,7 @@
     height: 6px;
     background-color: #337ab7 !important;
 }
+
+#btn-add {
+    margin: 35px 0;
+}
